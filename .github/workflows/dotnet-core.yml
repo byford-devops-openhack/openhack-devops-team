@@ -2,6 +2,8 @@ name: .NET Core
 
 on:
   push:
+    paths : 
+    - 'api/poi/*'
     branches-ignore: [ master ]
   pull_request:
     branches: [ master ]
