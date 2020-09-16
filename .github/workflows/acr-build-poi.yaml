@@ -28,13 +28,13 @@ jobs:
         uses: ams0/acr-task-github-action@v1
         with:
           # Service Principal with Contributor role on the ACR
-          service_principal: ${{ secrets.service_principal }}
+          service_principal: ${{ secrets.CLIENT_ID }}
           # Service Principal password
-          service_principal_password: ${{ secrets.service_principal_password }}
+          service_principal_password: ${{ secrets.CLIENT_SECRET }}
           # Azure Container Registry tenant
-          tenant: ${{ secrets.tenant }}
+          tenant: ${{ secrets.TENANT_ID }}
           # The name of the ACR, minus the .azurecr.io
-          registry: ${{ secrets.registry }}
+          registry: ${{ secrets.REGISTRY }}
           # Repository to use
           repository: devopsoh
           # Docker image name
