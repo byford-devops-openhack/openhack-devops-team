@@ -4,12 +4,11 @@ on:
   push:
     paths : 
     - 'apis/poi/**'
-    - '.github/**'
+
     branches-ignore: [ master ]
   pull_request:
     paths : 
     - 'apis/poi/**'
-    - '.github/**'
     branches: [ master ]
 
 jobs:
