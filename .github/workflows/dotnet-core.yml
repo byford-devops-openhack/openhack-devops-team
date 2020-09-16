@@ -3,11 +3,13 @@ name: .NET Core
 on:
   push:
     paths : 
-    - 'apis/poi/*'
+    - 'apis/poi/**'
+    - '.github/**'
     branches-ignore: [ master ]
   pull_request:
     paths : 
-    - 'apis/poi/*'
+    - 'apis/poi/**'
+    - '.github/**'
     branches: [ master ]
 
 jobs:
