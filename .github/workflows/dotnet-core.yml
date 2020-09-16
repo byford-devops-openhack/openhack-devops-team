@@ -12,6 +12,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./apis/poi
 
     steps:
     - uses: actions/checkout@v2
@@ -20,7 +22,7 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore ./apis/poi/tests/UnitTests/UnitTests.csproj
+      run: dotnet restore ${{env.working-directory}}/web/poi.csproj
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
