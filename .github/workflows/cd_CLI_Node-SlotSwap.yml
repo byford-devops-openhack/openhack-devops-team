@@ -40,7 +40,7 @@ jobs:
           
       - name: Check if staging is healthy and swap if successful
         run: |
-          if ! [ grep -q "Healthy" <<< `curl  -sSf https://openhack62d3tcj1poi-staging.azurewebsites.net/api/healthcheck/userprofile` ]; then
+          if ! [ grep -q "Healthy" <<< `curl  -sSf https://openhack62d3tcj1userprofile-staging.azurewebsites.net/api/healthcheck/userprofile` ]; then
             az webapp deployment slot swap --name openhack62d3tcj1userprofile --resource-group openhack62d3tcj1rg --slot Staging --target-slot Production            
           else
             echo 'Service unhealthy'
