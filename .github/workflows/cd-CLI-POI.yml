@@ -21,20 +21,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Logs into Azure
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          
-          
-          
+          echo "Logging into Azure"
           az login --service-principal -u ${{ secrets.CLIENT_ID }} -p ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
+
+      - name: Builds image
+        run: |
+          echo "Building API-POI image..."
+          echo ${GITHUB_RUN_NUMBER}
+          #echo "Changing directory to $GITOHTEAMDIRPATH/apis/poi/web..."
+          cd apis/poi/web
+          pwd
+          az acr build --image "devopsoh/api-poi:${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
           
-          
-          
+      - name: Pushes image to ACR
+        run: |
+          az webapp config show --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging 
+          az webapp config container set --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-poi:'${GITHUB_RUN_NUMBER} 
+                
   
