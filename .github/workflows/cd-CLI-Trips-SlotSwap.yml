@@ -42,7 +42,7 @@ jobs:
         run: |
           if ! [ grep -q "Healthy" <<< `curl  -sSf https://openhack62d3tcj1trips-staging.azurewebsites.net/api/healthcheck/trips` ]; then
             echo 'im in the if statement'
-            #az webapp deployment slot swap --name openhack62d3tcj1trips --resource-group openhack62d3tcj1rg --slot Staging --target-slot Production            
+            az webapp deployment slot swap --name openhack62d3tcj1trips --resource-group openhack62d3tcj1rg --slot Staging --target-slot Production            
           else
             echo 'im in the else statement'
           fi
