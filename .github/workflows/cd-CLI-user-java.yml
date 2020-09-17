@@ -34,7 +34,7 @@ jobs:
           pwd
           az acr build --image "devopsoh/api-user-java:${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
           
-      - name: Pushes image to ACR
+      - name: Pushes image to ACR and updates the staging slot webapp to the new image
         run: |
           az webapp config show --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot Staging 
           az webapp config container set --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot Staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-user-java:'${GITHUB_RUN_NUMBER} 
