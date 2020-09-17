@@ -41,7 +41,7 @@ jobs:
           #echo "Changing directory to $GITOHTEAMDIRPATH/apis/poi/web..."
           cd apis/poi/web
           pwd
-          az acr build --image "devopsoh/api-poi:clitest" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
+          az acr build --image "devopsoh/api-poi:clitest, ${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
           
           
           
