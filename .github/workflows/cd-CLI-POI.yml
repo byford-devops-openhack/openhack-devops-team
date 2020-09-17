@@ -36,9 +36,12 @@ jobs:
           az login --service-principal -u ${{ secrets.CLIENT_ID }} -p ${{ secrets.CLIENT_SECRET }} --tenant ${{ secrets.TENANT_ID }}
           
           echo "Building API-POI image..."
+          echo ${GITHUB_RUN_NUMBER}
+          pwd
           #echo "Changing directory to $GITOHTEAMDIRPATH/apis/poi/web..."
           cd apis/poi/web
-          az acr build --image "devopsoh/api-poi:clitest, ${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
+          pwd
+          az acr build --image "devopsoh/api-poi:${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
           
           
           
