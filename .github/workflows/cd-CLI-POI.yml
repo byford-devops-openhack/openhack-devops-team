@@ -39,6 +39,6 @@ jobs:
       - name: Pushes image to ACR
         run: |
           az webapp config show --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging 
-          az webapp config container set --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-poi:'${{GITHUB_RUN_NUMBER}} 
+          az webapp config container set --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-poi:'${GITHUB_RUN_NUMBER} 
                 
   
