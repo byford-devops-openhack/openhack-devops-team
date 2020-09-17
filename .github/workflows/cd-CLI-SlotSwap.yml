@@ -6,8 +6,6 @@ name: CD-CLI-SlotSwap
 # events but only for the master branch
 on:
   
-  
-  
   workflow_dispatch:
     inputs:
         logLevel:

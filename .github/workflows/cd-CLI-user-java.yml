@@ -7,6 +7,8 @@ name: CLI-user-java
 on:
   push:
     branches: [ master ]
+    paths: 
+      - 'apis/user-java/**'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -36,7 +38,7 @@ jobs:
           
       - name: Pushes image to ACR and updates the staging slot webapp to the new image
         run: |
-          az webapp config show --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot Staging 
-          az webapp config container set --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot Staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-user-java:'${GITHUB_RUN_NUMBER} 
+          az webapp config show --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot staging 
+          az webapp config container set --name openhack62d3tcj1userjava --resource-group openhack62d3tcj1rg --slot staging --docker-custom-image-name='DOCKER|openhack62d3tcj1acr.azurecr.io/devopsoh/api-user-java:'${GITHUB_RUN_NUMBER} 
                 
   
