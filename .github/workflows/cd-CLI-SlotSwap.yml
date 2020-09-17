@@ -31,10 +31,11 @@ jobs:
           
       - name: Chek if staging is healthy and swap if succeed
         run: |
-          if ! [ grep -q "Healthy" <<< `curl  -sSf https://openhack62d3tcj1poi-staging.azurewebsites.net/api/healthcheck/poi`];
-          then
-            echo 'in the if statement'
+          if ! [ grep -q "Healthy" <<< `curl  -sSf https://openhack62d3tcj1poi-staging.azurewebsites.net/api/healthcheck/poi` ] then
+            echo 'im in the if statement'
             #az webapp deployment slot swap --name openhack62d3tcj1poi --resource-group openhack62d3tcj1rg --slot Staging --target-slot Production            
+          else
+            echo 'im in the else statement'
           fi
 
 
