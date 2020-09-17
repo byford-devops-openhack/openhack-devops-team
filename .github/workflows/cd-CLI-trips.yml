@@ -32,8 +32,8 @@ jobs:
         run: |
           echo "Building API-trips image..."
           echo ${GITHUB_RUN_NUMBER}
-          #echo "Changing directory to $GITOHTEAMDIRPATH/apis/trips/web..."
-          cd apis/trips/web
+          #echo "Changing directory to $GITOHTEAMDIRPATH/apis/trips..."
+          cd apis/trips
           pwd
           az acr build --image "devopsoh/api-trips:${GITHUB_RUN_NUMBER}" --registry ${{ secrets.REGISTRY }} --file Dockerfile .
           
